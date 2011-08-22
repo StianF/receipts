@@ -7,10 +7,11 @@ class Ability
     end
     if user.is?(:admin)
       can :manage, :all
-    elsif user.is(:member)
+    elsif user.is?(:member)
       can :manage, :receipts
       can :read, :companies
       can :manage, :users
+      can :manage, :roles
     end
     # Define abilities for the passed in user here. For example:
     #

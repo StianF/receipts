@@ -48,6 +48,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     mocha (0.9.12)
+    mysql2 (0.2.13)
     nifty-generators (0.4.6)
     paperclip (2.3.16)
       activerecord (>= 2.3.0)
@@ -91,6 +92,7 @@ DEPENDENCIES
   cancan
   jquery-rails
   mocha
+  mysql2 (< 0.3)
   nifty-generators
   paperclip
   rails (= 3.0.8)
