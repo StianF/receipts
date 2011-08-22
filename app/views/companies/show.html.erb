@@ -1,0 +1,19 @@
+<% title "Company" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @company.name %>
+</p>
+<p>
+  <strong>Web:</strong>
+  <%= link_to "http://"+/(http[s]?:\/\/)?([\S]*)/.match(@company.web)[2], "http://"+ /(http[s]?:\/\/)?([\S]*)/.match(@company.web)[2]%>
+</p>
+<p>
+	<%= image_tag @company.logo.url %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_company_path(@company) %> |
+  <%= link_to "Destroy", @company, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", companies_path %>
+</p>

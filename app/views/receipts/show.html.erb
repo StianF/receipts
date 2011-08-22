@@ -1,0 +1,44 @@
+<% title "Receipt" %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @receipt.title %>
+</p>
+<p>
+  <strong>Date:</strong>
+  <%= @receipt.date.to_date().to_formatted_s(:long_ordinal) %>
+</p>
+<p>
+  <strong>Company:</strong><br />
+  <p>
+    <%= link_to (image_tag @receipt.company.logo.url, :height=>50), @receipt.company.web %>
+  </p>
+</p>
+<p>
+    <h3>Lines:</h3>
+    <table id="line_table">
+      <thead>
+        <tr><th>Title</th><th>Price</th><th>Qty</th><th>Total</th></tr>
+      </thead>
+      <tbody>
+      <% @receipt.receipt_lines.each do |rl| %>
+        <tr><td><%=rl.title %></td><td><%=rl.price%></td><td><%=rl.qty%></td><td><%=rl.price*rl.qty%></td></tr>
+      <% end %>
+      </tbody>
+    </table>
+  </p>
+  <p>
+    <h3>Files:</h3>
+    <table id="file_table">
+      <tbody>
+      <% @receipt.receipt_files.each do |rf| %>
+        <tr><td><%=link_to rf.file_file_name, rf.file.url%></td></tr>
+      <% end %>
+      </tbody>
+    </table>
+  </p>
+<p>
+  <%= link_to "Edit", edit_receipt_path(@receipt) %> |
+  <%= link_to "Destroy", @receipt, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", receipts_path %>
+</p>

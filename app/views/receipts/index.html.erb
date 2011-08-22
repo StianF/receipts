@@ -1,0 +1,22 @@
+<% title "Receipts" %>
+<%= form_tag receipts_path, :method => "get" do %>
+<%= text_field_tag :q %>
+<%= submit_tag "Search" %>
+<% end %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Date</th>
+  </tr>
+  <% for receipt in @receipts %>
+    <tr>
+      <td><%= receipt.title %></td>
+      <td><%= receipt.date.to_date().to_formatted_s(:long_ordinal) %></td>
+      <td><%= link_to "Show", receipt %></td>
+      <td><%= link_to "Edit", edit_receipt_path(receipt) %></td>
+      <td><%= link_to "Destroy", receipt, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Receipt", new_receipt_path %></p>

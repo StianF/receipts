@@ -1,0 +1,50 @@
+<%= form_for @receipt, :html => {:multipart => true} do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :date %><br />
+    <%= f.text_field :date %>
+  </p>
+  <p>
+    <%= f.label :company %><br />
+    <%#= f.collection_select :company_id, Company.all, :id, :name %>
+    <%= f.text_field :company_id, "data-pre" => (@receipt.company.nil?)?"[]":"[{\"id\":#{@receipt.company.id},\"name\":\"#{@receipt.company.name}\"}]" %>
+  </p>
+  <p>
+    <h3>Lines:</h3>
+    <table id="line_table">
+      <thead>
+        <tr><th>Title</th><th>Price</th><th class="qty-column">Qty</th></tr>
+      </thead>
+      <tbody>
+      <% index = -1 %>
+      <% f.fields_for :receipt_lines do |builder| %>
+        <tr id="receipt_receipt_lines_row_<%=index = index+1%>_id">
+          <%= render 'receipt_line', :f => builder %> 
+          <td><a class="delete_line" receipt_line_id=<%= index %>>Delete</a></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <a id="add_line">Add Line</a>
+  </p>
+  <p>
+    <h3>Files:</h3>
+    <table id="file_table">
+      <tbody>
+      <% index = -1 %>
+      <% f.fields_for :receipt_files do |builder| %>
+        <tr id="receipt_receipt_files_row_<%=index = index+1%>_id">
+          <%= render 'receipt_file', :f => builder %> 
+          <td><a class="delete_file" receipt_file_id=<%= index %>>Delete</a></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <a id="add_file">Add File</a>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

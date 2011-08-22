@@ -1,0 +1,16 @@
+<%= form_for @company, :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :web %><br />
+    <%= f.text_field :web %>
+  </p>
+	<p>
+		<%= f.label :logo %><br />
+		<%= f.file_field :logo %>
+	</p>
+  <p><%= f.submit %></p>
+<% end %>
