@@ -1,5 +1,5 @@
 # RVM bootstrap
-$:.unshift(File.expand_path("/usr/local/rvm/lib"))
+$:.unshift("/usr/local/rvm/lib")
 require 'rvm/capistrano'
 set :rvm_ruby_string, '1.9.2-p290'
 set :rvm_type, :user
@@ -47,7 +47,6 @@ namespace :deploy do
   task :symlink_shared, :roles => :app do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "chmod -R 775 #{release_path}"
-    # run "ln -nfs #{shared_path}/images/users #{release_path}/public/images/users"
   end
 end
 
