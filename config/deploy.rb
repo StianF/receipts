@@ -1,6 +1,6 @@
 # RVM bootstrap
 $:.unshift(File.expand_path("~/.rvm/lib"))
-require 'rvm/capistrano'
+#require 'rvm/capistrano'
 set :rvm_ruby_string, '1.9.2-p290'
 set :rvm_type, :user
 
@@ -10,7 +10,7 @@ require 'bundler/capistrano'
 
 # main details
 set :application, "fr3drikstad.com"
-role :web, "frdrikstad.com"
+role :web, "fr3drikstad.com"
 role :app, "fr3drikstad.com"
 role :db, "fr3drikstad.com", :primary => true
 

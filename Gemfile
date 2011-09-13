@@ -19,9 +19,9 @@ gem 'paperclip'
 gem 'cancan'
 gem 'capistrano'
 
-gem 'scrapi'
+#gem 'scrapi'
 #gem 'iconv'
-gem 'curb'
+#gem 'curb'
 
 # Use unicorn as the web server
 # gem 'unicorn'
